@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Pure.Primitives.Number.Operations</PackageId>
+    <RootNamespace>Pure.Primitives.Number.Operations</RootNamespace>
+    <AssemblyName>Pure.Primitives.Number.Operations</AssemblyName>
+    <Authors>Dmitry Kurochkin</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.Number.Operations</PackageProjectUrl>
+  </PropertyGroup>
+
 </Project>
