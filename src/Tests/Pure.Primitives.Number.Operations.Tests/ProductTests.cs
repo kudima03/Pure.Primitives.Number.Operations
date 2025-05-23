@@ -25,8 +25,8 @@ public sealed record ProductTests
     }
 
     [Fact]
-    public void TakeProductFromEmptyCollectionAsZero()
+    public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Equal(0, new Product<int>(Enumerable.Empty<INumber<int>>()).Value);
+        Assert.Throws<InvalidOperationException>(() => new Product<int>(Enumerable.Empty<INumber<int>>()).Value);
     }
 }

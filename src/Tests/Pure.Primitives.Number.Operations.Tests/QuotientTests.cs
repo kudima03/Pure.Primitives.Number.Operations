@@ -29,8 +29,8 @@ public sealed record QuotientTests
     }
 
     [Fact]
-    public void TakesQuotientFromEmptyCollectionAsZero()
+    public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Equal(0, new Quotient<float>(Enumerable.Empty<INumber<float>>()).Value);
+        Assert.Throws<InvalidOperationException>(() => new Quotient<float>(Enumerable.Empty<INumber<float>>()).Value);
     }
 }

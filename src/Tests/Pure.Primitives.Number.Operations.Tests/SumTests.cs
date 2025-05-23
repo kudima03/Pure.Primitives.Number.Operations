@@ -22,8 +22,8 @@ public sealed record SumTests
     }
 
     [Fact]
-    public void TakesSumFromEmptyCollectionAsZero()
+    public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Equal(0, new Sum<int>(Enumerable.Empty<INumber<int>>()).Value);
+        Assert.Throws<InvalidOperationException>(() => new Sum<int>(Enumerable.Empty<INumber<int>>()).Value);
     }
 }

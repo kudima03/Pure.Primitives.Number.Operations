@@ -17,8 +17,8 @@ public sealed record RemainderTests
     }
 
     [Fact]
-    public void TakesRemainderFromEmptyCollectionAsZero()
+    public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Equal(0, new Remainder<int>(Enumerable.Empty<INumber<int>>()).Value);
+        Assert.Throws<InvalidOperationException>(() => new Remainder<int>(Enumerable.Empty<INumber<int>>()).Value);
     }
 }
