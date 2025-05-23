@@ -14,4 +14,14 @@ public sealed record Min<T> : INumber<T> where T : System.Numerics.INumber<T>
     }
 
     T INumber<T>.Value => _numbers.Select(x => x.Value).Min()!;
+
+    public override int GetHashCode()
+    {
+        throw new InvalidOperationException();
+    }
+
+    public override string ToString()
+    {
+        throw new InvalidOperationException();
+    }
 }
