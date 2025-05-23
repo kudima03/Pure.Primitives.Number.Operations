@@ -29,4 +29,16 @@ public sealed record DifferenceTests
         INumber<int> difference = new Difference<int>(Enumerable.Empty<INumber<int>>());
         Assert.Throws<InvalidOperationException>(() => difference.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Difference<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Difference<float>(new Float(10)).ToString());
+    }
 }
