@@ -24,8 +24,8 @@ public sealed record DifferenceTests
     }
 
     [Fact]
-    public void SubtractEmptyCollectionAsZero()
+    public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Equal(0, new Difference<int>(Enumerable.Empty<INumber<int>>()).Value);
+        Assert.Throws<InvalidOperationException>(() => new Difference<int>(Enumerable.Empty<INumber<int>>()).Value);
     }
 }
