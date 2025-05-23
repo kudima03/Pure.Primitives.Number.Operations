@@ -18,12 +18,14 @@ public sealed record SumTests
     {
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
-        Assert.Equal(numbers.Sum(), new Sum<double>(numbers.Select(x => new Double(x))).Value);
+        INumber<double> sum = new Sum<double>(numbers.Select(x => new Double(x)));
+        Assert.Equal(numbers.Sum(), sum.Value);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Throws<InvalidOperationException>(() => new Sum<int>(Enumerable.Empty<INumber<int>>()).Value);
+        INumber<int> sum = new Sum<int>(Enumerable.Empty<INumber<int>>());
+        Assert.Throws<InvalidOperationException>(() => sum.Value);
     }
 }
