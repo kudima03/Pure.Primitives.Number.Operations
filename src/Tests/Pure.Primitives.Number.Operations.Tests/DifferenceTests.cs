@@ -33,12 +33,12 @@ public sealed record DifferenceTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<InvalidOperationException>(() => new Difference<float>(new Float(10)).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new Difference<float>(new Float(10)).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<InvalidOperationException>(() => new Difference<float>(new Float(10)).ToString());
+        Assert.Throws<NotSupportedException>(() => new Difference<float>(new Float(10)).ToString());
     }
 }

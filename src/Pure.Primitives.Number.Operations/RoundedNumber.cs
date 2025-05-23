@@ -15,11 +15,11 @@ public sealed record RoundedNumber<T> : INumber<T> where T : System.Numerics.IFl
 
     public override int GetHashCode()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 
     public override string ToString()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 }

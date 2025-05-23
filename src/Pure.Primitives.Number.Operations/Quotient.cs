@@ -17,11 +17,11 @@ public sealed record Quotient<T> : INumber<T> where T : System.Numerics.IFloatin
 
     public override int GetHashCode()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 
     public override string ToString()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 }

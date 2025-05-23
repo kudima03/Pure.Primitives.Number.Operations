@@ -26,12 +26,12 @@ public sealed record RemainderTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<InvalidOperationException>(() => new Remainder<float>(new Float(10)).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new Remainder<float>(new Float(10)).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<InvalidOperationException>(() => new Remainder<float>(new Float(10)).ToString());
+        Assert.Throws<NotSupportedException>(() => new Remainder<float>(new Float(10)).ToString());
     }
 }
