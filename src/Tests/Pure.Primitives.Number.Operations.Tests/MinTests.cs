@@ -11,9 +11,9 @@ public sealed record MinTests
         const int b = 20;
         const int c = 30;
 
-        INumber<int> max = new Min<int>(new Int(a), new Int(b), new Int(c));
+        INumber<int> min = new Min<int>(new Int(a), new Int(b), new Int(c));
 
-        Assert.Equal(10, max.Value);
+        Assert.Equal(10, min.Value);
     }
 
     [Fact]
@@ -21,14 +21,15 @@ public sealed record MinTests
     {
         IEnumerable<INumber<int>> numbers = Enumerable.Repeat(new Int(10), 10);
 
-        INumber<int> max = new Min<int>(numbers);
+        INumber<int> min = new Min<int>(numbers);
 
-        Assert.Equal(10, max.Value);
+        Assert.Equal(10, min.Value);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Throws<InvalidOperationException>(() => new Min<int>(Enumerable.Empty<INumber<int>>()).Value);
+        INumber<int> min = new Min<int>(Enumerable.Empty<INumber<int>>());
+        Assert.Throws<InvalidOperationException>(() => min.Value);
     }
 }
