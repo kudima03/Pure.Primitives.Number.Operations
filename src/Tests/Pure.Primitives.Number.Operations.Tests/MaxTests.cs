@@ -32,4 +32,16 @@ public sealed record MaxTests
         INumber<int> max = new Max<int>(Enumerable.Empty<INumber<int>>());
         Assert.Throws<InvalidOperationException>(() => max.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Max<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Max<float>(new Float(10)).ToString());
+    }
 }
