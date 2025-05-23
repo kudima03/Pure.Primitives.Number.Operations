@@ -13,5 +13,5 @@ public sealed record Max<T> : INumber<T> where T : System.Numerics.INumber<T>
         _numbers = numbers;
     }
 
-    public T Value => _numbers.Select(x => x.Value).Max()!;
+    T INumber<T>.Value => _numbers.Select(x => x.Value).Max()!;
 }
