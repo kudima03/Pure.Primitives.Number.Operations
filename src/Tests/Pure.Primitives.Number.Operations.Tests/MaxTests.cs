@@ -36,12 +36,12 @@ public sealed record MaxTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<InvalidOperationException>(() => new Max<float>(new Float(10)).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new Max<float>(new Float(10)).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<InvalidOperationException>(() => new Max<float>(new Float(10)).ToString());
+        Assert.Throws<NotSupportedException>(() => new Max<float>(new Float(10)).ToString());
     }
 }
