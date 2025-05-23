@@ -29,6 +29,7 @@ public sealed record MaxTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Throws<InvalidOperationException>(() => new Max<int>(Enumerable.Empty<INumber<int>>()).Value);
+        INumber<int> max = new Max<int>(Enumerable.Empty<INumber<int>>());
+        Assert.Throws<InvalidOperationException>(() => max.Value);
     }
 }

@@ -31,6 +31,7 @@ public sealed record QuotientTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        Assert.Throws<InvalidOperationException>(() => new Quotient<float>(Enumerable.Empty<INumber<float>>()).Value);
+        INumber<float> quotient = new Quotient<float>(Enumerable.Empty<INumber<float>>());
+        Assert.Throws<InvalidOperationException>(() => quotient.Value);
     }
 }

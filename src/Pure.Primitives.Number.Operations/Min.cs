@@ -13,5 +13,5 @@ public sealed record Min<T> : INumber<T> where T : System.Numerics.INumber<T>
         _numbers = numbers;
     }
 
-    public T Value => _numbers.Select(x => x.Value).Min()!;
+    T INumber<T>.Value => _numbers.Select(x => x.Value).Min()!;
 }

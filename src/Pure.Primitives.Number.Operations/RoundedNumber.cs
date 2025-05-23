@@ -11,5 +11,5 @@ public sealed record RoundedNumber<T> : INumber<T> where T : System.Numerics.IFl
         _number = number;
     }
 
-    public T Value => T.Round(_number.Value);
+    T INumber<T>.Value => T.Round(_number.Value);
 }
