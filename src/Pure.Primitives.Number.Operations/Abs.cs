@@ -12,4 +12,14 @@ public sealed record Abs<T> : INumber<T> where T : System.Numerics.INumber<T>
     }
 
     T INumber<T>.Value => T.Abs(_number.Value);
+
+    public override int GetHashCode()
+    {
+        throw new InvalidOperationException();
+    }
+
+    public override string ToString()
+    {
+        throw new InvalidOperationException();
+    }
 }
