@@ -23,4 +23,16 @@ public sealed record RoundedNumberTests
 
         Assert.Equal(double.Round(a), rounded.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new RoundedNumber<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new RoundedNumber<float>(new Float(10)).ToString());
+    }
 }
