@@ -34,4 +34,16 @@ public sealed record QuotientTests
         INumber<float> quotient = new Quotient<float>(Enumerable.Empty<INumber<float>>());
         Assert.Throws<InvalidOperationException>(() => quotient.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Quotient<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Quotient<float>(new Float(10)).ToString());
+    }
 }
