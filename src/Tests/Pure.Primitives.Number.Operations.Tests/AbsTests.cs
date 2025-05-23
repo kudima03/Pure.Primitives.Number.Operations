@@ -33,4 +33,16 @@ public sealed record AbsTests
 
         Assert.Equal(double.Abs(expected), abs.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Abs<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Abs<float>(new Float(10)).ToString());
+    }
 }

@@ -12,4 +12,14 @@ public sealed record RoundedNumber<T> : INumber<T> where T : System.Numerics.IFl
     }
 
     T INumber<T>.Value => T.Round(_number.Value);
+
+    public override int GetHashCode()
+    {
+        throw new InvalidOperationException();
+    }
+
+    public override string ToString()
+    {
+        throw new InvalidOperationException();
+    }
 }

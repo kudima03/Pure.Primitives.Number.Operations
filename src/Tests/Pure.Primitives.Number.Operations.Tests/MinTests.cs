@@ -32,4 +32,16 @@ public sealed record MinTests
         INumber<int> min = new Min<int>(Enumerable.Empty<INumber<int>>());
         Assert.Throws<InvalidOperationException>(() => min.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Min<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Min<float>(new Float(10)).ToString());
+    }
 }

@@ -22,4 +22,16 @@ public sealed record RemainderTests
         INumber<int> remainder = new Remainder<int>(Enumerable.Empty<INumber<int>>());
         Assert.Throws<InvalidOperationException>(() => remainder.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Remainder<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Remainder<float>(new Float(10)).ToString());
+    }
 }

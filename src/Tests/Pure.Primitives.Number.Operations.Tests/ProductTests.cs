@@ -31,4 +31,16 @@ public sealed record ProductTests
         INumber<int> product = new Product<int>(Enumerable.Empty<INumber<int>>());
         Assert.Throws<InvalidOperationException>(() => product.Value);
     }
+
+    [Fact]
+    public void ThrowsExceptionOnGetHashCode()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Product<float>(new Float(10)).GetHashCode());
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnToString()
+    {
+        Assert.Throws<InvalidOperationException>(() => new Product<float>(new Float(10)).ToString());
+    }
 }
