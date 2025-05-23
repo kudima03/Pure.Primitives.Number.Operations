@@ -13,5 +13,5 @@ public sealed record Quotient<T> : INumber<T> where T : System.Numerics.IFloatin
         _values = values;
     }
 
-    public T Value => _values.Select(x => x.Value).Aggregate((number1, number2) => number1 / number2);
+    T INumber<T>.Value => _values.Select(x => x.Value).Aggregate((number1, number2) => number1 / number2);
 }
