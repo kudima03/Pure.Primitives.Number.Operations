@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record DifferenceTests
 {
     [Fact]
-    public void SubtractCorrectly()
+    public void Subtract()
     {
         const int a = 10;
         const int b = 20;
@@ -15,7 +15,7 @@ public sealed record DifferenceTests
     }
 
     [Fact]
-    public void SubtractLargeDoubleCollectionCorrectly()
+    public void SubtractLargeDoubleCollection()
     {
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
@@ -24,7 +24,7 @@ public sealed record DifferenceTests
     }
 
     [Fact]
-    public void SubtractEmptyCollectionCorrectly()
+    public void SubtractEmptyCollectionAsZero()
     {
         Assert.Equal(0, new Difference<int>(Enumerable.Empty<INumber<int>>()).Value);
     }

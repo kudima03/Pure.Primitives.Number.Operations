@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record MaxTests
 {
     [Fact]
-    public void ComputeMaxCorrectly()
+    public void TakeMax()
     {
         const int a = 10;
         const int b = 20;
@@ -17,7 +17,7 @@ public sealed record MaxTests
     }
 
     [Fact]
-    public void ComputeMaxCorrectlyFromSameValues()
+    public void TakeMaxFromSameValues()
     {
         IEnumerable<INumber<int>> numbers = Enumerable.Repeat(new Int(10), 10);
 
@@ -27,7 +27,7 @@ public sealed record MaxTests
     }
 
     [Fact]
-    public void ComputeMaxCorrectlyFromEmptyCollection()
+    public void ThrowsExceptionOnEmptyCollection()
     {
         Assert.Throws<InvalidOperationException>(() => new Max<int>(Enumerable.Empty<INumber<int>>()).Value);
     }

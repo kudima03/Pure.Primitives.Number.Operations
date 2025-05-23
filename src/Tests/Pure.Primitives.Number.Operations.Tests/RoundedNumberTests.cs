@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record RoundedNumberTests
 {
     [Fact]
-    public void RoundFloatCorrect()
+    public void RoundFloat()
     {
         const float a = 10.3F;
 
@@ -15,7 +15,7 @@ public sealed record RoundedNumberTests
     }
 
     [Fact]
-    public void RoundDoubleCorrectly()
+    public void RoundDouble()
     {
         const double a = -10;
 
