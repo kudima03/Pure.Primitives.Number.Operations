@@ -13,7 +13,5 @@ public sealed record Remainder<T> : INumber<T> where T : System.Numerics.INumber
         _values = values;
     }
 
-    public T Value => !_values.Any()
-        ? T.Zero
-        : _values.Select(x => x.Value).Aggregate((number1, number2) => number1 % number2);
+    public T Value =>  _values.Select(x => x.Value).Aggregate((number1, number2) => number1 % number2);
 }
