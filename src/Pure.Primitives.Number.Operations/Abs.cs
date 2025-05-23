@@ -11,5 +11,5 @@ public sealed record Abs<T> : INumber<T> where T : System.Numerics.INumber<T>
         _number = number;
     }
 
-    public T Value => T.Abs(_number.Value);
+    T INumber<T>.Value => T.Abs(_number.Value);
 }
