@@ -17,7 +17,7 @@ public sealed record RemainderTests
     }
 
     [Fact]
-    public void TakesZeroRemainderFromEmptyCollection()
+    public void TakesRemainderFromEmptyCollectionAsZero()
     {
         Assert.Equal(0, new Remainder<int>(Enumerable.Empty<INumber<int>>()).Value);
     }

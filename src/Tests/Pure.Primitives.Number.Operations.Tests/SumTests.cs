@@ -4,7 +4,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record SumTests
 {
     [Fact]
-    public void SumCorrectly()
+    public void TakesSum()
     {
         const int a = 10;
         const int b = 20;
@@ -14,7 +14,7 @@ public sealed record SumTests
     }
 
     [Fact]
-    public void SumLargeDoubleCollectionCorrectly()
+    public void TakesSumFromLargeDoubleCollection()
     {
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
@@ -22,7 +22,7 @@ public sealed record SumTests
     }
 
     [Fact]
-    public void EmptyCollection()
+    public void TakesSumFromEmptyCollectionAsZero()
     {
         Assert.Equal(0, new Sum<int>(Enumerable.Empty<INumber<int>>()).Value);
     }

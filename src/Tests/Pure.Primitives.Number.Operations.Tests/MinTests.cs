@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record MinTests
 {
     [Fact]
-    public void ComputeMinCorrectly()
+    public void TakeMin()
     {
         const int a = 10;
         const int b = 20;
@@ -17,7 +17,7 @@ public sealed record MinTests
     }
 
     [Fact]
-    public void ComputeMinCorrectlyFromSameValues()
+    public void TakeMinFromSameValues()
     {
         IEnumerable<INumber<int>> numbers = Enumerable.Repeat(new Int(10), 10);
 
@@ -27,7 +27,7 @@ public sealed record MinTests
     }
 
     [Fact]
-    public void ComputeMinCorrectlyFromEmptyCollection()
+    public void ThrowsExceptionOnEmptyCollection()
     {
         Assert.Throws<InvalidOperationException>(() => new Min<int>(Enumerable.Empty<INumber<int>>()).Value);
     }

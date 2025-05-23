@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record ProductTests
 {
     [Fact]
-    public void ComputeProduct()
+    public void TakeProduct()
     {
         const int a = 10;
         const int b = 20;
@@ -17,7 +17,7 @@ public sealed record ProductTests
     }
 
     [Fact]
-    public void ComputeProductFromLargeCollection()
+    public void TakeProductFromLargeCollection()
     {
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
@@ -25,7 +25,7 @@ public sealed record ProductTests
     }
 
     [Fact]
-    public void ComputeProductFromEmptyCollection()
+    public void TakeProductFromEmptyCollectionAsZero()
     {
         Assert.Equal(0, new Product<int>(Enumerable.Empty<INumber<int>>()).Value);
     }

@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record QuotientTests
 {
     [Fact]
-    public void DividesCorrectly()
+    public void TakesQuotient()
     {
         const float a = 10.1F;
         const float b = 20.2F;
@@ -17,7 +17,7 @@ public sealed record QuotientTests
     }
 
     [Fact]
-    public void DividesOnZeroCorrectly()
+    public void TakesQuotientOnZeroAsInfinity()
     {
         const float a = 10.1F;
         const float b = 20.2F;
@@ -29,7 +29,7 @@ public sealed record QuotientTests
     }
 
     [Fact]
-    public void DividesEmptyCollection()
+    public void TakesQuotientFromEmptyCollectionAsZero()
     {
         Assert.Equal(0, new Quotient<float>(Enumerable.Empty<INumber<float>>()).Value);
     }
