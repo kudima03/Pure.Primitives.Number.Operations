@@ -13,5 +13,5 @@ public sealed record Sum<T> : INumber<T> where T : System.Numerics.INumber<T>
         _values = values;
     }
 
-    public T Value => _values.Select(number => number.Value).Aggregate((number1, number2) => number1 + number2);
+    T INumber<T>.Value => _values.Select(number => number.Value).Aggregate((number1, number2) => number1 + number2);
 }
