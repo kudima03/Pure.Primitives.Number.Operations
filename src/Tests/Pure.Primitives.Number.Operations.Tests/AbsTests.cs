@@ -5,7 +5,7 @@ namespace Pure.Primitives.Number.Operations.Tests;
 public sealed record AbsTests
 {
     [Fact]
-    public void CorrectFloatAbs()
+    public void TakeFloatAbs()
     {
         const float expected = -10.3F;
 
@@ -15,7 +15,7 @@ public sealed record AbsTests
     }
 
     [Fact]
-    public void CorrectIntAbs()
+    public void TakeIntAbs()
     {
         const int expected = -10;
 
@@ -25,7 +25,7 @@ public sealed record AbsTests
     }
 
     [Fact]
-    public void CorrectDoubleAbs()
+    public void TakeDoubleAbs()
     {
         const double expected = -10;
 
