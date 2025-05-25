@@ -13,14 +13,14 @@ public sealed record GreaterThanConditionTests
     }
 
     [Fact]
-    public void TakesPositiveResultOnAscendingValues()
+    public void TakesNegativeResultOnAscendingValues()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10), new Int(11), new Int(12));
         Assert.False(isGreaterThan.Value);
     }
 
     [Fact]
-    public void TakesNegativeResultOnDescendingValues()
+    public void TakesPositiveResultOnDescendingValues()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(12), new Int(11), new Int(10));
         Assert.True(isGreaterThan.Value);
