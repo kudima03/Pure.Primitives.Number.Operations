@@ -1,0 +1,53 @@
+﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Number;
+
+namespace Pure.Primitives.Number.Operations;
+
+public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.INumber<T>
+{
+    private readonly IEnumerable<INumber<T>> _values;
+
+    public GreaterThanCondition(params INumber<T>[] values) : this(values.AsReadOnly()) { }
+
+    public GreaterThanCondition(IEnumerable<INumber<T>> values)
+    {
+        _values = values;
+    }
+
+    bool IBool.Value
+    {
+        get
+        {
+            if (_values.Take(2).Count() < 2)
+            {
+                throw new InvalidOperationException();
+            }
+
+            IEnumerable<T> numbers = _values.Select(x => x.Value);
+
+            T previousNumber = numbers.First();
+
+            foreach (T number in numbers.Skip(1))
+            {
+                if (previousNumber <= number)
+                {
+                    return false;
+                }
+
+                previousNumber = number;
+            }
+
+            return true;
+        }
+    }
+
+    public override int GetHashCode()
+    {
+        throw new InvalidOperationException();
+    }
+
+    public override string ToString()
+    {
+        throw new InvalidOperationException();
+    }
+}
