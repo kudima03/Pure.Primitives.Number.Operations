@@ -25,6 +25,7 @@ public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.I
 
             IEnumerable<T> numbers = _values.Select(x => x.Value);
 
+            //Stryker disable once linq
             T previousNumber = numbers.First();
 
             foreach (T number in numbers.Skip(1))
