@@ -33,6 +33,13 @@ public sealed record ProductTests
     }
 
     [Fact]
+    public void ThrowsExceptionOnOverflow()
+    {
+        INumber<int> valueWithOverflow = new Product<int>(new Int(int.MaxValue), new Int(2));
+        Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
+    }
+
+    [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
         Assert.Throws<NotSupportedException>(() => new Product<float>(new Float(10)).GetHashCode());
