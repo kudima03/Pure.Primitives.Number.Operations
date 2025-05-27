@@ -29,11 +29,11 @@ public sealed record NotEqualCondition<T> : IBool where T : System.Numerics.INum
 
     public override int GetHashCode()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 
     public override string ToString()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 }
