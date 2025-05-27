@@ -37,7 +37,7 @@ public sealed record DecrementedNumberTests
     [Fact]
     public void ThrowsExceptionOnUnderflow()
     {
-        INumber<int> valueWithUnderflow = new DecrementedNumber<int>(new Int(int.MinValue));
+        INumber<int> valueWithUnderflow = new DecrementedNumber<int>(new MinInt());
         Assert.Throws<OverflowException>(() => valueWithUnderflow.Value);
     }
 
