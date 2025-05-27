@@ -51,7 +51,7 @@ public sealed record GreaterThanOrEqualConditionTests
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool condition = new GreaterThanOrEqualCondition<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => condition.Value);
+        Assert.Throws<ArgumentException>(() => condition.Value);
     }
 
     [Fact]
