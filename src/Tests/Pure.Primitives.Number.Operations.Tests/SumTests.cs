@@ -37,6 +37,13 @@ public sealed record SumTests
     }
 
     [Fact]
+    public void ThrowsExceptionOnOverflow()
+    {
+        INumber<int> valueWithOverflow = new Sum<int>(new Int(int.MaxValue), new Int(1));
+        Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
+    }
+
+    [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
         Assert.Throws<NotSupportedException>(() => new Sum<float>(new Float(10)).GetHashCode());
