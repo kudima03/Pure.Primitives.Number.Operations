@@ -30,7 +30,7 @@ public sealed record MinTests
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> min = new Min<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => min.Value);
+        Assert.Throws<ArgumentException>(() => min.Value);
     }
 
     [Fact]
