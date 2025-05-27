@@ -24,10 +24,17 @@ public sealed record DifferenceTests
     }
 
     [Fact]
+    public void HandlesSingleParameter()
+    {
+        INumber<int> difference = new Difference<int>(new Int(10));
+        Assert.Equal(10, difference.Value);
+    }
+
+    [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> difference = new Difference<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => difference.Value);
+        Assert.Throws<ArgumentException>(() => difference.Value);
     }
 
     [Fact]
