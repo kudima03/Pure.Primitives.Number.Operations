@@ -37,7 +37,7 @@ public sealed record IncrementedNumberTests
     [Fact]
     public void ThrowsExceptionOnOverflow()
     {
-        INumber<int> valueWithOverflow = new IncrementedNumber<int>(new Int(int.MaxValue));
+        INumber<int> valueWithOverflow = new IncrementedNumber<int>(new MaxInt());
         Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
     }
 

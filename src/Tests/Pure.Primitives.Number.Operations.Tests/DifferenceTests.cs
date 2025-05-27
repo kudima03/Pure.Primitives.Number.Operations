@@ -33,7 +33,7 @@ public sealed record DifferenceTests
     [Fact]
     public void ThrowsExceptionOnUnderflow()
     {
-        INumber<int> valueWithUnderflow = new Difference<int>(new Int(int.MinValue), new Int(1));
+        INumber<int> valueWithUnderflow = new Difference<int>(new MinInt(), new Int(1));
         Assert.Throws<OverflowException>(() => valueWithUnderflow.Value);
     }
 

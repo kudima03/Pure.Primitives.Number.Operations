@@ -35,7 +35,7 @@ public sealed record ProductTests
     [Fact]
     public void ThrowsExceptionOnOverflow()
     {
-        INumber<int> valueWithOverflow = new Product<int>(new Int(int.MaxValue), new Int(2));
+        INumber<int> valueWithOverflow = new Product<int>(new MaxInt(), new Int(2));
         Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
     }
 
