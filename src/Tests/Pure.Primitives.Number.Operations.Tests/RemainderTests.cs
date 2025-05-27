@@ -20,7 +20,7 @@ public sealed record RemainderTests
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> remainder = new Remainder<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => remainder.Value);
+        Assert.Throws<ArgumentException>(() => remainder.Value);
     }
 
     [Fact]
