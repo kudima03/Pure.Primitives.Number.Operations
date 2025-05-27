@@ -44,11 +44,11 @@ public sealed record LessThanOrEqualCondition<T> : IBool where T : System.Numeri
 
     public override int GetHashCode()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 
     public override string ToString()
     {
-        throw new InvalidOperationException();
+        throw new NotSupportedException();
     }
 }

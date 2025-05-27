@@ -36,12 +36,12 @@ public sealed record NotEqualConditionTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<InvalidOperationException>(() => new NotEqualCondition<float>(new Float(10)).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new NotEqualCondition<float>(new Float(10)).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<InvalidOperationException>(() => new NotEqualCondition<float>(new Float(10)).ToString());
+        Assert.Throws<NotSupportedException>(() => new NotEqualCondition<float>(new Float(10)).ToString());
     }
 }
