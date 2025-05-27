@@ -31,6 +31,13 @@ public sealed record DifferenceTests
     }
 
     [Fact]
+    public void ThrowsExceptionOnUnderflow()
+    {
+        INumber<int> valueWithUnderflow = new Difference<int>(new Int(int.MinValue), new Int(1));
+        Assert.Throws<OverflowException>(() => valueWithUnderflow.Value);
+    }
+
+    [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> difference = new Difference<int>(Enumerable.Empty<INumber<int>>());
