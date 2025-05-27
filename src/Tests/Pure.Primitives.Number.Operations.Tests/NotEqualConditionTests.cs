@@ -30,7 +30,7 @@ public sealed record NotEqualConditionTests
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool equality = new NotEqualCondition<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => equality.Value);
+        Assert.Throws<ArgumentException>(() => equality.Value);
     }
 
     [Fact]
