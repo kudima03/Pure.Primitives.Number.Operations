@@ -20,7 +20,7 @@ public sealed record NotEqualCondition<T> : IBool where T : System.Numerics.INum
         {
             if (!_values.Any())
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             return _values.DistinctBy(x => x.Value).Count() > 1;
