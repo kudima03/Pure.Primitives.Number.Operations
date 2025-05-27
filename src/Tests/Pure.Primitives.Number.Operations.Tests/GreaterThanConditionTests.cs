@@ -34,10 +34,10 @@ public sealed record GreaterThanConditionTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnSingleElementInCollection()
+    public void TakesPositiveResultOnSingleElementInCollection()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10));
-        Assert.Throws<InvalidOperationException>(() => isGreaterThan.Value);
+        Assert.True(isGreaterThan.Value);
     }
 
     [Fact]
