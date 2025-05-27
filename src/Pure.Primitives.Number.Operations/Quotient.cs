@@ -13,7 +13,18 @@ public sealed record Quotient<T> : INumber<T> where T : System.Numerics.IFloatin
         _values = values;
     }
 
-    T INumber<T>.Value => _values.Select(x => x.Value).Aggregate((number1, number2) => number1 / number2);
+    T INumber<T>.Value
+    {
+        get
+        {
+            if (!_values.Any())
+            {
+                throw new ArgumentException();
+            }
+
+            return _values.Select(x => x.Value).Aggregate((number1, number2) => number1 / number2);
+        }
+    }
 
     public override int GetHashCode()
     {
