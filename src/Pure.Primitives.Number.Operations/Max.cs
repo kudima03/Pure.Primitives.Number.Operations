@@ -13,7 +13,18 @@ public sealed record Max<T> : INumber<T> where T : System.Numerics.INumber<T>
         _numbers = numbers;
     }
 
-    T INumber<T>.Value => _numbers.Select(x => x.Value).Max()!;
+    T INumber<T>.Value
+    {
+        get
+        {
+            if (!_numbers.Any())
+            {
+                throw new ArgumentException();
+            }
+
+            return _numbers.Select(x => x.Value).Max()!;
+        }
+    }
 
     public override int GetHashCode()
     {

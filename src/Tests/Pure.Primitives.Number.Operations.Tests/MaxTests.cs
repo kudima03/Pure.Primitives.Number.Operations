@@ -30,7 +30,7 @@ public sealed record MaxTests
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> max = new Max<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => max.Value);
+        Assert.Throws<ArgumentException>(() => max.Value);
     }
 
     [Fact]
