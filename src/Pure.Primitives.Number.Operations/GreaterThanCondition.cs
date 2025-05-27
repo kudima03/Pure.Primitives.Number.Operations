@@ -20,7 +20,7 @@ public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.I
         {
             if (!_values.Any())
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             IEnumerable<T> numbers = _values.Select(x => x.Value);
