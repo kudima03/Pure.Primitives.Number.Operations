@@ -23,10 +23,17 @@ public sealed record SumTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnEmptyCollection()
+    public void TakesSumFromSingleParameter()
+    {
+        INumber<int> sum = new Sum<int>(new Int(10));
+        Assert.Equal(10, sum.Value);
+    }
+
+    [Fact]
+    public void TakesSumFromEmptyCollection()
     {
         INumber<int> sum = new Sum<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<InvalidOperationException>(() => sum.Value);
+        Assert.Equal(0, sum.Value);
     }
 
     [Fact]
