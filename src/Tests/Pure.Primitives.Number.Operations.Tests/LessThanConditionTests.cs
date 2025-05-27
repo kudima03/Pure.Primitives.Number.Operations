@@ -41,10 +41,10 @@ public sealed record LessThanConditionTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnSingleElementInCollection()
+    public void TakesPositiveResultOnSingleElementInCollection()
     {
         IBool condition = new LessThanCondition<int>(new Int(10));
-        Assert.Throws<InvalidOperationException>(() => condition.Value);
+        Assert.True(condition.Value);
     }
 
     [Fact]

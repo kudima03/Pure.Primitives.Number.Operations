@@ -18,7 +18,7 @@ public sealed record LessThanCondition<T> : IBool where T : System.Numerics.INum
     {
         get
         {
-            if (_values.Take(2).Count() < 2)
+            if (!_values.Any())
             {
                 throw new InvalidOperationException();
             }
