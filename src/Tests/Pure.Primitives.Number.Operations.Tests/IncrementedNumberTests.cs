@@ -35,6 +35,13 @@ public sealed record IncrementedNumberTests
     }
 
     [Fact]
+    public void ThrowsExceptionOnOverflow()
+    {
+        INumber<int> valueWithOverflow = new IncrementedNumber<int>(new Int(int.MaxValue));
+        Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
+    }
+
+    [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
         Assert.Throws<NotSupportedException>(() => new IncrementedNumber<float>(new Float(10)).GetHashCode());
