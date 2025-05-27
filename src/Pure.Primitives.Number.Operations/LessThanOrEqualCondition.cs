@@ -18,9 +18,9 @@ public sealed record LessThanOrEqualCondition<T> : IBool where T : System.Numeri
     {
         get
         {
-            if (_values.Take(2).Count() < 2)
+            if (!_values.Any())
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException();
             }
 
             IEnumerable<T> numbers = _values.Select(x => x.Value);
