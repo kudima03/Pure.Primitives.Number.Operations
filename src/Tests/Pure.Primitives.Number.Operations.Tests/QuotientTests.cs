@@ -13,7 +13,7 @@ public sealed record QuotientTests
 
         INumber<float> quotient = new Quotient<float>(new Float(a), new Float(b), new Float(c));
 
-        Assert.Equal(a / b / c, quotient.Value);
+        Assert.Equal(a / b / c, quotient.NumberValue);
     }
 
     [Fact]
@@ -25,14 +25,14 @@ public sealed record QuotientTests
 
         INumber<float> quotient = new Quotient<float>(new Float(a), new Float(b), new Float(c));
 
-        Assert.Equal(float.PositiveInfinity, quotient.Value);
+        Assert.Equal(float.PositiveInfinity, quotient.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<float> quotient = new Quotient<float>(Enumerable.Empty<INumber<float>>());
-        Assert.Throws<ArgumentException>(() => quotient.Value);
+        Assert.Throws<ArgumentException>(() => quotient.NumberValue);
     }
 
     [Fact]

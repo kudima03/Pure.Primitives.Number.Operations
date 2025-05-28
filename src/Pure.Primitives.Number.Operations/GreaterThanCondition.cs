@@ -14,7 +14,7 @@ public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.I
         _values = values;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -23,7 +23,7 @@ public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.I
                 throw new ArgumentException();
             }
 
-            IEnumerable<T> numbers = _values.Select(x => x.Value);
+            IEnumerable<T> numbers = _values.Select(x => x.NumberValue);
 
             //Stryker disable once linq
             T previousNumber = numbers.First();

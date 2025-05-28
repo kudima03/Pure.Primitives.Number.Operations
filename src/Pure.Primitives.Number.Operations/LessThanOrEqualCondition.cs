@@ -14,7 +14,7 @@ public sealed record LessThanOrEqualCondition<T> : IBool where T : System.Numeri
         _values = values;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -23,7 +23,7 @@ public sealed record LessThanOrEqualCondition<T> : IBool where T : System.Numeri
                 throw new ArgumentException();
             }
 
-            IEnumerable<T> numbers = _values.Select(x => x.Value);
+            IEnumerable<T> numbers = _values.Select(x => x.NumberValue);
 
             //Stryker disable once linq
             T previousNumber = numbers.First();

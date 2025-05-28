@@ -13,7 +13,7 @@ public sealed record MaxTests
 
         INumber<int> max = new Max<int>(new Int(a), new Int(b), new Int(c));
 
-        Assert.Equal(30, max.Value);
+        Assert.Equal(30, max.NumberValue);
     }
 
     [Fact]
@@ -23,14 +23,14 @@ public sealed record MaxTests
 
         INumber<int> max = new Max<int>(numbers);
 
-        Assert.Equal(10, max.Value);
+        Assert.Equal(10, max.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> max = new Max<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => max.Value);
+        Assert.Throws<ArgumentException>(() => max.NumberValue);
     }
 
     [Fact]

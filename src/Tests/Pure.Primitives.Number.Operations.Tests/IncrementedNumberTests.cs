@@ -11,7 +11,7 @@ public sealed record IncrementedNumberTests
 
         INumber<float> number = new IncrementedNumber<float>(new Float(sample));
 
-        Assert.Equal(sample + 1, number.Value);
+        Assert.Equal(sample + 1, number.NumberValue);
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public sealed record IncrementedNumberTests
 
         INumber<int> number = new IncrementedNumber<int>(new Int(sample));
 
-        Assert.Equal(sample + 1, number.Value);
+        Assert.Equal(sample + 1, number.NumberValue);
     }
 
     [Fact]
@@ -31,14 +31,14 @@ public sealed record IncrementedNumberTests
 
         INumber<double> number = new IncrementedNumber<double>(new Double(sample));
 
-        Assert.Equal(sample + 1, number.Value);
+        Assert.Equal(sample + 1, number.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnOverflow()
     {
         INumber<int> valueWithOverflow = new IncrementedNumber<int>(new MaxInt());
-        Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
+        Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
     }
 
     [Fact]

@@ -10,7 +10,7 @@ public sealed record SumTests
         const int b = 20;
         const int c = 30;
         INumber<int> sum = new Sum<int>(new Int(a), new Int(b), new Int(c));
-        Assert.Equal(a + b + c, sum.Value);
+        Assert.Equal(a + b + c, sum.NumberValue);
     }
 
     [Fact]
@@ -19,28 +19,28 @@ public sealed record SumTests
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
         INumber<double> sum = new Sum<double>(numbers.Select(x => new Double(x)));
-        Assert.Equal(numbers.Sum(), sum.Value);
+        Assert.Equal(numbers.Sum(), sum.NumberValue);
     }
 
     [Fact]
     public void TakesSumFromSingleParameter()
     {
         INumber<int> sum = new Sum<int>(new Int(10));
-        Assert.Equal(10, sum.Value);
+        Assert.Equal(10, sum.NumberValue);
     }
 
     [Fact]
     public void TakesSumFromEmptyCollection()
     {
         INumber<int> sum = new Sum<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Equal(0, sum.Value);
+        Assert.Equal(0, sum.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnOverflow()
     {
         INumber<int> valueWithOverflow = new Sum<int>(new MaxInt(), new Int(1));
-        Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
+        Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
     }
 
     [Fact]

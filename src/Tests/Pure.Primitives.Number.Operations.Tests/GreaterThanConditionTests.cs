@@ -9,42 +9,42 @@ public sealed record GreaterThanConditionTests
     public void TakesNegativeResultOnSameValues()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10), new Int(10), new Int(10));
-        Assert.False(isGreaterThan.Value);
+        Assert.False(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAscendingValues()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10), new Int(11), new Int(12));
-        Assert.False(isGreaterThan.Value);
+        Assert.False(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesPositiveResultOnDescendingValues()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(12), new Int(11), new Int(10));
-        Assert.True(isGreaterThan.Value);
+        Assert.True(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAllAscendingOneSameValue()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(11), new Int(12), new Int(13), new Int(13));
-        Assert.False(isGreaterThan.Value);
+        Assert.False(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesPositiveResultOnSingleElementInCollection()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10));
-        Assert.True(isGreaterThan.Value);
+        Assert.True(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool isGreaterThan = new GreaterThanCondition<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => isGreaterThan.Value);
+        Assert.Throws<ArgumentException>(() => isGreaterThan.BoolValue);
     }
 
     [Fact]

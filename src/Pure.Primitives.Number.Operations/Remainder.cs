@@ -13,7 +13,7 @@ public sealed record Remainder<T> : INumber<T> where T : System.Numerics.INumber
         _values = values;
     }
 
-    T INumber<T>.Value
+    T INumber<T>.NumberValue
     {
         get
         {
@@ -22,7 +22,7 @@ public sealed record Remainder<T> : INumber<T> where T : System.Numerics.INumber
                 throw new ArgumentException();
             }
 
-            return _values.Select(x => x.Value).Aggregate((number1, number2) => number1 % number2);
+            return _values.Select(x => x.NumberValue).Aggregate((number1, number2) => number1 % number2);
         }
     }
 

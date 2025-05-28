@@ -11,7 +11,7 @@ public sealed record RoundedNumberTests
 
         INumber<float> rounded = new RoundedNumber<float>(new Float(a));
 
-        Assert.Equal(float.Round(a), rounded.Value);
+        Assert.Equal(float.Round(a), rounded.NumberValue);
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public sealed record RoundedNumberTests
 
         INumber<double> rounded = new RoundedNumber<double>(new Double(a));
 
-        Assert.Equal(double.Round(a), rounded.Value);
+        Assert.Equal(double.Round(a), rounded.NumberValue);
     }
 
     [Fact]

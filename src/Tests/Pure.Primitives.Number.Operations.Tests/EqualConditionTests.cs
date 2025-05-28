@@ -9,28 +9,28 @@ public sealed record EqualConditionTests
     public void TakesPositiveResultOnSameValues()
     {
         IBool equality = new EqualCondition<int>(new Int(10), new Int(10), new Int(10));
-        Assert.True(equality.Value);
+        Assert.True(equality.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnDifferentValues()
     {
         IBool equality = new EqualCondition<int>(new Int(10), new Int(11), new Int(12));
-        Assert.False(equality.Value);
+        Assert.False(equality.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAllSameOneDifferentValue()
     {
         IBool equality = new EqualCondition<int>(new Int(10), new Int(10), new Int(10), new Int(12));
-        Assert.False(equality.Value);
+        Assert.False(equality.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool equality = new EqualCondition<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => equality.Value);
+        Assert.Throws<ArgumentException>(() => equality.BoolValue);
     }
 
     [Fact]

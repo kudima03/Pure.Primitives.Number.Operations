@@ -9,49 +9,49 @@ public sealed record LessThanConditionTests
     public void TakesNegativeResultOnSameValues()
     {
         IBool condition = new LessThanCondition<int>(new Int(10), new Int(10), new Int(10));
-        Assert.False(condition.Value);
+        Assert.False(condition.BoolValue);
     }
 
     [Fact]
     public void TakesPositiveResultOnAscendingValues()
     {
         IBool condition = new LessThanCondition<int>(new Int(10), new Int(11), new Int(12));
-        Assert.True(condition.Value);
+        Assert.True(condition.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnDescendingValues()
     {
         IBool condition = new LessThanCondition<int>(new Int(12), new Int(11), new Int(10));
-        Assert.False(condition.Value);
+        Assert.False(condition.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAllAscendingOneSameValue()
     {
         IBool condition = new LessThanCondition<int>(new Int(11), new Int(12), new Int(13), new Int(13));
-        Assert.False(condition.Value);
+        Assert.False(condition.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAllDescendingOneSameValue()
     {
         IBool condition = new LessThanCondition<int>(new Int(13), new Int(12), new Int(11), new Int(11));
-        Assert.False(condition.Value);
+        Assert.False(condition.BoolValue);
     }
 
     [Fact]
     public void TakesPositiveResultOnSingleElementInCollection()
     {
         IBool condition = new LessThanCondition<int>(new Int(10));
-        Assert.True(condition.Value);
+        Assert.True(condition.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool condition = new LessThanCondition<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => condition.Value);
+        Assert.Throws<ArgumentException>(() => condition.BoolValue);
     }
 
     [Fact]

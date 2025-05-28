@@ -13,7 +13,7 @@ public sealed record MinTests
 
         INumber<int> min = new Min<int>(new Int(a), new Int(b), new Int(c));
 
-        Assert.Equal(10, min.Value);
+        Assert.Equal(10, min.NumberValue);
     }
 
     [Fact]
@@ -23,14 +23,14 @@ public sealed record MinTests
 
         INumber<int> min = new Min<int>(numbers);
 
-        Assert.Equal(10, min.Value);
+        Assert.Equal(10, min.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> min = new Min<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => min.Value);
+        Assert.Throws<ArgumentException>(() => min.NumberValue);
     }
 
     [Fact]

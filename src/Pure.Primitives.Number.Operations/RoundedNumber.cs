@@ -11,7 +11,7 @@ public sealed record RoundedNumber<T> : INumber<T> where T : System.Numerics.IFl
         _number = number;
     }
 
-    T INumber<T>.Value => T.Round(_number.Value);
+    T INumber<T>.NumberValue => T.Round(_number.NumberValue);
 
     public override int GetHashCode()
     {
