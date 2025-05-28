@@ -13,14 +13,14 @@ public sealed record RemainderTests
 
         INumber<float> remainder = new Remainder<float>(new Float(a), new Float(b), new Float(c));
 
-        Assert.Equal(a % b % c, remainder.Value);
+        Assert.Equal(a % b % c, remainder.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> remainder = new Remainder<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => remainder.Value);
+        Assert.Throws<ArgumentException>(() => remainder.NumberValue);
     }
 
     [Fact]

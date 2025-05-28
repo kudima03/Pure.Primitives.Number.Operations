@@ -11,7 +11,7 @@ public sealed record DifferenceTests
         const int b = 20;
         const int c = 30;
         INumber<int> diff = new Difference<int>(new Int(a), new Int(b), new Int(c));
-        Assert.Equal(a - b - c, diff.Value);
+        Assert.Equal(a - b - c, diff.NumberValue);
     }
 
     [Fact]
@@ -20,28 +20,28 @@ public sealed record DifferenceTests
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
         INumber<double> difference = new Difference<double>(numbers.Select(x => new Double(x)));
-        Assert.Equal(numbers.Aggregate((x, y) => x - y), difference.Value);
+        Assert.Equal(numbers.Aggregate((x, y) => x - y), difference.NumberValue);
     }
 
     [Fact]
     public void HandlesSingleParameter()
     {
         INumber<int> difference = new Difference<int>(new Int(10));
-        Assert.Equal(10, difference.Value);
+        Assert.Equal(10, difference.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnUnderflow()
     {
         INumber<int> valueWithUnderflow = new Difference<int>(new MinInt(), new Int(1));
-        Assert.Throws<OverflowException>(() => valueWithUnderflow.Value);
+        Assert.Throws<OverflowException>(() => valueWithUnderflow.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         INumber<int> difference = new Difference<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => difference.Value);
+        Assert.Throws<ArgumentException>(() => difference.NumberValue);
     }
 
     [Fact]

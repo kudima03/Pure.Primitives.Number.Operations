@@ -11,7 +11,7 @@ public sealed record AbsTests
 
         INumber<float> abs = new Abs<float>(new Float(expected));
 
-        Assert.Equal(float.Abs(expected), abs.Value);
+        Assert.Equal(float.Abs(expected), abs.NumberValue);
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public sealed record AbsTests
 
         INumber<int> abs = new Abs<int>(new Int(expected));
 
-        Assert.Equal(int.Abs(expected), abs.Value);
+        Assert.Equal(int.Abs(expected), abs.NumberValue);
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public sealed record AbsTests
 
         INumber<double> abs = new Abs<double>(new Double(expected));
 
-        Assert.Equal(double.Abs(expected), abs.Value);
+        Assert.Equal(double.Abs(expected), abs.NumberValue);
     }
 
     [Fact]

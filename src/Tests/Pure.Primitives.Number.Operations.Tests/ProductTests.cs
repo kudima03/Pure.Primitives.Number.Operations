@@ -13,7 +13,7 @@ public sealed record ProductTests
 
         INumber<int> product = new Product<int>(new Int(a), new Int(b), new Int(c));
 
-        Assert.Equal(a * b * c, product.Value);
+        Assert.Equal(a * b * c, product.NumberValue);
     }
 
     [Fact]
@@ -22,21 +22,21 @@ public sealed record ProductTests
         Random random = new Random();
         IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
         INumber<double> product = new Product<double>(numbers.Select(x => new Double(x)));
-        Assert.Equal(numbers.Aggregate((x, y) => x * y), product.Value);
+        Assert.Equal(numbers.Aggregate((x, y) => x * y), product.NumberValue);
     }
 
     [Fact]
     public void TakeProductFromEmptyCollectionAsZero()
     {
         INumber<int> product = new Product<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Equal(0, product.Value);
+        Assert.Equal(0, product.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnOverflow()
     {
         INumber<int> valueWithOverflow = new Product<int>(new MaxInt(), new Int(2));
-        Assert.Throws<OverflowException>(() => valueWithOverflow.Value);
+        Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
     }
 
     [Fact]

@@ -11,7 +11,7 @@ public sealed record DecrementedNumber<T> : INumber<T> where T : System.Numerics
         _number = number;
     }
 
-    T INumber<T>.Value => _number.Value - T.One;
+    T INumber<T>.NumberValue => _number.NumberValue - T.One;
 
     public override int GetHashCode()
     {

@@ -13,13 +13,13 @@ public sealed record Product<T> : INumber<T> where T : System.Numerics.INumber<T
         _values = values;
     }
 
-    T INumber<T>.Value
+    T INumber<T>.NumberValue
     {
         get
         {
             return !_values.Any() ?
                 T.Zero :
-                _values.Select(x => x.Value).Aggregate((number1, number2) => number1 * number2);
+                _values.Select(x => x.NumberValue).Aggregate((number1, number2) => number1 * number2);
         }
     }
 

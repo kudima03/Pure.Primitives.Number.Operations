@@ -13,7 +13,7 @@ public sealed record Max<T> : INumber<T> where T : System.Numerics.INumber<T>
         _numbers = numbers;
     }
 
-    T INumber<T>.Value
+    T INumber<T>.NumberValue
     {
         get
         {
@@ -22,7 +22,7 @@ public sealed record Max<T> : INumber<T> where T : System.Numerics.INumber<T>
                 throw new ArgumentException();
             }
 
-            return _numbers.Select(x => x.Value).Max()!;
+            return _numbers.Select(x => x.NumberValue).Max()!;
         }
     }
 

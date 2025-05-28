@@ -11,7 +11,7 @@ public sealed record DecrementedNumberTests
 
         INumber<float> number = new DecrementedNumber<float>(new Float(sample));
 
-        Assert.Equal(sample - 1, number.Value);
+        Assert.Equal(sample - 1, number.NumberValue);
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public sealed record DecrementedNumberTests
 
         INumber<int> number = new DecrementedNumber<int>(new Int(sample));
 
-        Assert.Equal(sample - 1, number.Value);
+        Assert.Equal(sample - 1, number.NumberValue);
     }
 
     [Fact]
@@ -31,14 +31,14 @@ public sealed record DecrementedNumberTests
 
         INumber<double> number = new DecrementedNumber<double>(new Double(sample));
 
-        Assert.Equal(sample - 1, number.Value);
+        Assert.Equal(sample - 1, number.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnUnderflow()
     {
         INumber<int> valueWithUnderflow = new DecrementedNumber<int>(new MinInt());
-        Assert.Throws<OverflowException>(() => valueWithUnderflow.Value);
+        Assert.Throws<OverflowException>(() => valueWithUnderflow.NumberValue);
     }
 
     [Fact]

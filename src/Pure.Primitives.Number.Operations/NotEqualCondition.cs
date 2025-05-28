@@ -14,7 +14,7 @@ public sealed record NotEqualCondition<T> : IBool where T : System.Numerics.INum
         _values = values;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -23,7 +23,7 @@ public sealed record NotEqualCondition<T> : IBool where T : System.Numerics.INum
                 throw new ArgumentException();
             }
 
-            return _values.DistinctBy(x => x.Value).Count() > 1;
+            return _values.DistinctBy(x => x.NumberValue).Count() > 1;
         }
     }
 
