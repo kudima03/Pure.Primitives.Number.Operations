@@ -7,9 +7,7 @@ public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.I
 {
     private readonly IEnumerable<INumber<T>> _values;
 
-    public GreaterThanCondition(params INumber<T>[] values) : this(values.AsReadOnly()) { }
-
-    public GreaterThanCondition(IEnumerable<INumber<T>> values)
+    public GreaterThanCondition(params IEnumerable<INumber<T>> values)
     {
         _values = values;
     }

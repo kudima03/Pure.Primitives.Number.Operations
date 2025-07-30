@@ -7,9 +7,7 @@ public sealed record LessThanCondition<T> : IBool where T : System.Numerics.INum
 {
     private readonly IEnumerable<INumber<T>> _values;
 
-    public LessThanCondition(params INumber<T>[] values) : this(values.AsReadOnly()) { }
-
-    public LessThanCondition(IEnumerable<INumber<T>> values)
+    public LessThanCondition(params IEnumerable<INumber<T>> values)
     {
         _values = values;
     }

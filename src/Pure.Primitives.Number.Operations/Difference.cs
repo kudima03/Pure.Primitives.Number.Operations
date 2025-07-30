@@ -6,9 +6,7 @@ public sealed record Difference<T> : INumber<T> where T : System.Numerics.INumbe
 {
     private readonly IEnumerable<INumber<T>> _values;
 
-    public Difference(params INumber<T>[] values) : this(values.AsReadOnly()) { }
-
-    public Difference(IEnumerable<INumber<T>> values)
+    public Difference(params IEnumerable<INumber<T>> values)
     {
         _values = values;
     }
