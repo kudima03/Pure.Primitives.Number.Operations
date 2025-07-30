@@ -7,9 +7,7 @@ public sealed record NotEqualCondition<T> : IBool where T : System.Numerics.INum
 {
     private readonly IEnumerable<INumber<T>> _values;
 
-    public NotEqualCondition(params INumber<T>[] values) : this(values.AsReadOnly()) { }
-
-    public NotEqualCondition(IEnumerable<INumber<T>> values)
+    public NotEqualCondition(params IEnumerable<INumber<T>> values)
     {
         _values = values;
     }

@@ -6,9 +6,7 @@ public sealed record Remainder<T> : INumber<T> where T : System.Numerics.INumber
 {
     private readonly IEnumerable<INumber<T>> _values;
 
-    public Remainder(params INumber<T>[] values) : this(values.AsReadOnly()) { }
-
-    public Remainder(IEnumerable<INumber<T>> values)
+    public Remainder(params IEnumerable<INumber<T>> values)
     {
         _values = values;
     }

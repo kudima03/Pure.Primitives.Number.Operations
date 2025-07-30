@@ -6,9 +6,7 @@ public sealed record Quotient<T> : INumber<T> where T : System.Numerics.IFloatin
 {
     private readonly IEnumerable<INumber<T>> _values;
 
-    public Quotient(params INumber<T>[] values) : this(values.AsReadOnly()) { }
-
-    public Quotient(IEnumerable<INumber<T>> values)
+    public Quotient(params IEnumerable<INumber<T>> values)
     {
         _values = values;
     }

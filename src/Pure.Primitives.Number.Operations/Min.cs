@@ -6,9 +6,7 @@ public sealed record Min<T> : INumber<T> where T : System.Numerics.INumber<T>
 {
     private readonly IEnumerable<INumber<T>> _numbers;
 
-    public Min(params INumber<T>[] numbers) : this(numbers.AsReadOnly()) { }
-
-    public Min(IEnumerable<INumber<T>> numbers)
+    public Min(params IEnumerable<INumber<T>> numbers)
     {
         _numbers = numbers;
     }
