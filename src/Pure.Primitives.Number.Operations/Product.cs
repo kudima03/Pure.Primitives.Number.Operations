@@ -12,11 +12,12 @@ public sealed record Product<T> : INumber<T>
         _values = values;
     }
 
-    T INumber<T>.NumberValue => !_values.Any()
-                ? T.Zero
-                : _values
-                    .Select(x => x.NumberValue)
-                    .Aggregate((number1, number2) => number1 * number2);
+    T INumber<T>.NumberValue =>
+        !_values.Any()
+            ? T.Zero
+            : _values
+                .Select(x => x.NumberValue)
+                .Aggregate((number1, number2) => number1 * number2);
 
     public override int GetHashCode()
     {

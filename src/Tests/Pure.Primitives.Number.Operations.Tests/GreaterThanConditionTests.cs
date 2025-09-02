@@ -1,5 +1,4 @@
 using Pure.Primitives.Abstractions.Bool;
-using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -60,9 +59,7 @@ public sealed record GreaterThanConditionTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        IBool isGreaterThan = new GreaterThanCondition<int>(
-            []
-        );
+        IBool isGreaterThan = new GreaterThanCondition<int>([]);
         _ = Assert.Throws<ArgumentException>(() => isGreaterThan.BoolValue);
     }
 

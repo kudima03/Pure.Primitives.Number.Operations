@@ -20,9 +20,10 @@ public sealed record ProductTests
     public void TakeProductFromLargeCollection()
     {
         Random random = new Random();
-        IEnumerable<double> numbers = [.. Enumerable
-            .Range(0, 10000)
-            .Select(_ => random.NextDouble())];
+        IEnumerable<double> numbers =
+        [
+            .. Enumerable.Range(0, 10000).Select(_ => random.NextDouble()),
+        ];
         INumber<double> product = new Product<double>(numbers.Select(x => new Double(x)));
         Assert.Equal(numbers.Aggregate((x, y) => x * y), product.NumberValue);
     }

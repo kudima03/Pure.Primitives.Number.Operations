@@ -1,5 +1,4 @@
 using Pure.Primitives.Abstractions.Bool;
-using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 

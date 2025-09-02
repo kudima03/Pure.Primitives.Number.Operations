@@ -12,13 +12,10 @@ public sealed record Max<T> : INumber<T>
         _numbers = numbers;
     }
 
-    T INumber<T>.NumberValue
-    {
-        get
-        {
-            return !_numbers.Any() ? throw new ArgumentException() : _numbers.Max(x => x.NumberValue)!;
-        }
-    }
+    T INumber<T>.NumberValue =>
+        !_numbers.Any()
+            ? throw new ArgumentException()
+            : _numbers.Max(x => x.NumberValue)!;
 
     public override int GetHashCode()
     {

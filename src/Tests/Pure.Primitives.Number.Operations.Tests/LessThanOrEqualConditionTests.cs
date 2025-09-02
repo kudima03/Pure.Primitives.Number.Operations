@@ -1,5 +1,4 @@
 using Pure.Primitives.Abstractions.Bool;
-using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -72,9 +71,7 @@ public sealed record LessThanOrEqualConditionTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        IBool condition = new LessThanOrEqualCondition<int>(
-            []
-        );
+        IBool condition = new LessThanOrEqualCondition<int>([]);
         _ = Assert.Throws<ArgumentException>(() => condition.BoolValue);
     }
 

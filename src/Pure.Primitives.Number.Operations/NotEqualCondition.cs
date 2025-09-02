@@ -13,13 +13,10 @@ public sealed record NotEqualCondition<T> : IBool
         _values = values;
     }
 
-    bool IBool.BoolValue
-    {
-        get
-        {
-            return !_values.Any() ? throw new ArgumentException() : _values.DistinctBy(x => x.NumberValue).Count() > 1;
-        }
-    }
+    bool IBool.BoolValue =>
+        !_values.Any()
+            ? throw new ArgumentException()
+            : _values.DistinctBy(x => x.NumberValue).Count() > 1;
 
     public override int GetHashCode()
     {

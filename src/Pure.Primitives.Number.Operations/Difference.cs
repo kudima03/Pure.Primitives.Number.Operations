@@ -12,17 +12,12 @@ public sealed record Difference<T> : INumber<T>
         _values = values;
     }
 
-    T INumber<T>.NumberValue
-    {
-        get
-        {
-            return !_values.Any()
-                ? throw new ArgumentException()
-                : _values
+    T INumber<T>.NumberValue =>
+        !_values.Any()
+            ? throw new ArgumentException()
+            : _values
                 .Select(x => x.NumberValue)
                 .Aggregate((number1, number2) => number1 - number2);
-        }
-    }
 
     public override int GetHashCode()
     {
