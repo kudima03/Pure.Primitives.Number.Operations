@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -20,7 +20,9 @@ public sealed record ProductTests
     public void TakeProductFromLargeCollection()
     {
         Random random = new Random();
-        IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
+        IEnumerable<double> numbers = [.. Enumerable
+            .Range(0, 10000)
+            .Select(_ => random.NextDouble())];
         INumber<double> product = new Product<double>(numbers.Select(x => new Double(x)));
         Assert.Equal(numbers.Aggregate((x, y) => x * y), product.NumberValue);
     }
@@ -28,7 +30,7 @@ public sealed record ProductTests
     [Fact]
     public void TakeProductFromEmptyCollectionAsZero()
     {
-        INumber<int> product = new Product<int>(Enumerable.Empty<INumber<int>>());
+        INumber<int> product = new Product<int>([]);
         Assert.Equal(0, product.NumberValue);
     }
 
@@ -36,18 +38,22 @@ public sealed record ProductTests
     public void ThrowsExceptionOnOverflow()
     {
         INumber<int> valueWithOverflow = new Product<int>(new MaxInt(), new Int(2));
-        Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
+        _ = Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Product<float>(new Float(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Product<float>(new Float(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Product<float>(new Float(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Product<float>(new Float(10)).ToString()
+        );
     }
 }

@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations;
 
-public sealed record Quotient<T> : INumber<T> where T : System.Numerics.IFloatingPoint<T>
+public sealed record Quotient<T> : INumber<T>
+    where T : System.Numerics.IFloatingPoint<T>
 {
     private readonly IEnumerable<INumber<T>> _values;
 
@@ -15,12 +16,11 @@ public sealed record Quotient<T> : INumber<T> where T : System.Numerics.IFloatin
     {
         get
         {
-            if (!_values.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return _values.Select(x => x.NumberValue).Aggregate((number1, number2) => number1 / number2);
+            return !_values.Any()
+                ? throw new ArgumentException()
+                : _values
+                .Select(x => x.NumberValue)
+                .Aggregate((number1, number2) => number1 / number2);
         }
     }
 

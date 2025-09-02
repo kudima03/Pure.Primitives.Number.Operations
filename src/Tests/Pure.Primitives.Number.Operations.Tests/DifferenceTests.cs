@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -18,8 +18,12 @@ public sealed record DifferenceTests
     public void SubtractLargeDoubleCollection()
     {
         Random random = new Random();
-        IEnumerable<double> numbers = Enumerable.Range(0, 10000).Select(_ => random.NextDouble()).ToArray();
-        INumber<double> difference = new Difference<double>(numbers.Select(x => new Double(x)));
+        IEnumerable<double> numbers = [.. Enumerable
+            .Range(0, 10000)
+            .Select(_ => random.NextDouble())];
+        INumber<double> difference = new Difference<double>(
+            numbers.Select(x => new Double(x))
+        );
         Assert.Equal(numbers.Aggregate((x, y) => x - y), difference.NumberValue);
     }
 
@@ -34,25 +38,29 @@ public sealed record DifferenceTests
     public void ThrowsExceptionOnUnderflow()
     {
         INumber<int> valueWithUnderflow = new Difference<int>(new MinInt(), new Int(1));
-        Assert.Throws<OverflowException>(() => valueWithUnderflow.NumberValue);
+        _ = Assert.Throws<OverflowException>(() => valueWithUnderflow.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        INumber<int> difference = new Difference<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => difference.NumberValue);
+        INumber<int> difference = new Difference<int>([]);
+        _ = Assert.Throws<ArgumentException>(() => difference.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Difference<float>(new Float(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Difference<float>(new Float(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Difference<float>(new Float(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Difference<float>(new Float(10)).ToString()
+        );
     }
 }

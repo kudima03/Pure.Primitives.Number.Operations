@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -29,19 +29,23 @@ public sealed record MaxTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        INumber<int> max = new Max<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => max.NumberValue);
+        INumber<int> max = new Max<int>([]);
+        _ = Assert.Throws<ArgumentException>(() => max.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Max<float>(new Float(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Max<float>(new Float(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Max<float>(new Float(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Max<float>(new Float(10)).ToString()
+        );
     }
 }

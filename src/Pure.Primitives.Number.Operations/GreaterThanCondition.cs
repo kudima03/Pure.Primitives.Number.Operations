@@ -1,9 +1,10 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations;
 
-public sealed record GreaterThanCondition<T> : IBool where T : System.Numerics.INumber<T>
+public sealed record GreaterThanCondition<T> : IBool
+    where T : System.Numerics.INumber<T>
 {
     private readonly IEnumerable<INumber<T>> _values;
 

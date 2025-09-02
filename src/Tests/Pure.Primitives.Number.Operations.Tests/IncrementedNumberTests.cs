@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -38,18 +38,22 @@ public sealed record IncrementedNumberTests
     public void ThrowsExceptionOnOverflow()
     {
         INumber<int> valueWithOverflow = new IncrementedNumber<int>(new MaxInt());
-        Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
+        _ = Assert.Throws<OverflowException>(() => valueWithOverflow.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new IncrementedNumber<float>(new Float(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new IncrementedNumber<float>(new Float(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new IncrementedNumber<float>(new Float(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new IncrementedNumber<float>(new Float(10)).ToString()
+        );
     }
 }

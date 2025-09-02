@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
@@ -8,28 +8,45 @@ public sealed record GreaterThanConditionTests
     [Fact]
     public void TakesNegativeResultOnSameValues()
     {
-        IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10), new Int(10), new Int(10));
+        IBool isGreaterThan = new GreaterThanCondition<int>(
+            new Int(10),
+            new Int(10),
+            new Int(10)
+        );
         Assert.False(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAscendingValues()
     {
-        IBool isGreaterThan = new GreaterThanCondition<int>(new Int(10), new Int(11), new Int(12));
+        IBool isGreaterThan = new GreaterThanCondition<int>(
+            new Int(10),
+            new Int(11),
+            new Int(12)
+        );
         Assert.False(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesPositiveResultOnDescendingValues()
     {
-        IBool isGreaterThan = new GreaterThanCondition<int>(new Int(12), new Int(11), new Int(10));
+        IBool isGreaterThan = new GreaterThanCondition<int>(
+            new Int(12),
+            new Int(11),
+            new Int(10)
+        );
         Assert.True(isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void TakesNegativeResultOnAllAscendingOneSameValue()
     {
-        IBool isGreaterThan = new GreaterThanCondition<int>(new Int(11), new Int(12), new Int(13), new Int(13));
+        IBool isGreaterThan = new GreaterThanCondition<int>(
+            new Int(11),
+            new Int(12),
+            new Int(13),
+            new Int(13)
+        );
         Assert.False(isGreaterThan.BoolValue);
     }
 
@@ -43,19 +60,25 @@ public sealed record GreaterThanConditionTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        IBool isGreaterThan = new GreaterThanCondition<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => isGreaterThan.BoolValue);
+        IBool isGreaterThan = new GreaterThanCondition<int>(
+            []
+        );
+        _ = Assert.Throws<ArgumentException>(() => isGreaterThan.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new GreaterThanCondition<float>(new Float(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new GreaterThanCondition<float>(new Float(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new GreaterThanCondition<float>(new Float(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new GreaterThanCondition<float>(new Float(10)).ToString()
+        );
     }
 }

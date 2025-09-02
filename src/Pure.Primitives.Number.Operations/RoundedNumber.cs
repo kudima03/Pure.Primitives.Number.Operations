@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations;
 
-public sealed record RoundedNumber<T> : INumber<T> where T : System.Numerics.IFloatingPoint<T>
+public sealed record RoundedNumber<T> : INumber<T>
+    where T : System.Numerics.IFloatingPoint<T>
 {
     private readonly INumber<T> _number;
 

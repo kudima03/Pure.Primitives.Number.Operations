@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations;
 
-public sealed record Max<T> : INumber<T> where T : System.Numerics.INumber<T>
+public sealed record Max<T> : INumber<T>
+    where T : System.Numerics.INumber<T>
 {
     private readonly IEnumerable<INumber<T>> _numbers;
 
@@ -15,12 +16,7 @@ public sealed record Max<T> : INumber<T> where T : System.Numerics.INumber<T>
     {
         get
         {
-            if (!_numbers.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return _numbers.Select(x => x.NumberValue).Max()!;
+            return !_numbers.Any() ? throw new ArgumentException() : _numbers.Max(x => x.NumberValue)!;
         }
     }
 
