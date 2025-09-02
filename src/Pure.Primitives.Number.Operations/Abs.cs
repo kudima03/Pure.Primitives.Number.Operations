@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations;
 
-public sealed record Abs<T> : INumber<T> where T : System.Numerics.INumber<T>
+public sealed record Abs<T> : INumber<T>
+    where T : System.Numerics.INumber<T>
 {
     private readonly INumber<T> _number;
 

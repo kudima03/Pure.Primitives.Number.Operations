@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -29,19 +29,23 @@ public sealed record MinTests
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
-        INumber<int> min = new Min<int>(Enumerable.Empty<INumber<int>>());
-        Assert.Throws<ArgumentException>(() => min.NumberValue);
+        INumber<int> min = new Min<int>([]);
+        _ = Assert.Throws<ArgumentException>(() => min.NumberValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Min<float>(new Float(10)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Min<float>(new Float(10)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Min<float>(new Float(10)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Min<float>(new Float(10)).ToString()
+        );
     }
 }

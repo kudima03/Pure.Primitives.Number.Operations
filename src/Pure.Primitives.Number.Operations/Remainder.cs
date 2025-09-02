@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Abstractions.Number;
 
 namespace Pure.Primitives.Number.Operations;
 
-public sealed record Remainder<T> : INumber<T> where T : System.Numerics.INumber<T>
+public sealed record Remainder<T> : INumber<T>
+    where T : System.Numerics.INumber<T>
 {
     private readonly IEnumerable<INumber<T>> _values;
 
@@ -11,18 +12,12 @@ public sealed record Remainder<T> : INumber<T> where T : System.Numerics.INumber
         _values = values;
     }
 
-    T INumber<T>.NumberValue
-    {
-        get
-        {
-            if (!_values.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return _values.Select(x => x.NumberValue).Aggregate((number1, number2) => number1 % number2);
-        }
-    }
+    T INumber<T>.NumberValue =>
+        !_values.Any()
+            ? throw new ArgumentException()
+            : _values
+                .Select(x => x.NumberValue)
+                .Aggregate((number1, number2) => number1 % number2);
 
     public override int GetHashCode()
     {
