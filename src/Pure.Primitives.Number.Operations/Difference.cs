@@ -12,7 +12,7 @@ public sealed record Difference<T> : INumber<T>
         _values = values;
     }
 
-    T INumber<T>.NumberValue =>
+    public T NumberValue =>
         !_values.Any()
             ? throw new ArgumentException()
             : _values

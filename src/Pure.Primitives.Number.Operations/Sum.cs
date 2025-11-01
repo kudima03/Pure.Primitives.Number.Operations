@@ -12,7 +12,7 @@ public sealed record Sum<T> : INumber<T>
         _values = values;
     }
 
-    T INumber<T>.NumberValue =>
+    public T NumberValue =>
         _values
             .Select(number => number.NumberValue)
             .Aggregate(T.Zero, (number1, number2) => number1 + number2);
