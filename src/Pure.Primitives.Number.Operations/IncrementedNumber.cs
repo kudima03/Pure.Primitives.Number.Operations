@@ -12,7 +12,7 @@ public sealed record IncrementedNumber<T> : INumber<T>
         _number = number;
     }
 
-    T INumber<T>.NumberValue => _number.NumberValue + T.One;
+    public T NumberValue => _number.NumberValue + T.One;
 
     public override int GetHashCode()
     {

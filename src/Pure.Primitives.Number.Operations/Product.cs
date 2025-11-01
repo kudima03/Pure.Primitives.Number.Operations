@@ -12,7 +12,7 @@ public sealed record Product<T> : INumber<T>
         _values = values;
     }
 
-    T INumber<T>.NumberValue =>
+    public T NumberValue =>
         !_values.Any()
             ? T.Zero
             : _values

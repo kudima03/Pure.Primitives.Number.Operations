@@ -12,7 +12,7 @@ public sealed record RoundedNumber<T> : INumber<T>
         _number = number;
     }
 
-    T INumber<T>.NumberValue => T.Round(_number.NumberValue);
+    public T NumberValue => T.Round(_number.NumberValue);
 
     public override int GetHashCode()
     {

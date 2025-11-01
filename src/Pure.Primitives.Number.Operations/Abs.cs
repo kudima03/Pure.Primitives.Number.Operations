@@ -12,7 +12,7 @@ public sealed record Abs<T> : INumber<T>
         _number = number;
     }
 
-    T INumber<T>.NumberValue => T.Abs(_number.NumberValue);
+    public T NumberValue => T.Abs(_number.NumberValue);
 
     public override int GetHashCode()
     {
