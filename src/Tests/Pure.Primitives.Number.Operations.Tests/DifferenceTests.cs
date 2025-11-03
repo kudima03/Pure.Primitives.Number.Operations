@@ -9,9 +9,19 @@ public sealed record DifferenceTests
     [Fact]
     public void Subtract()
     {
-        IEnumerable<INumber<int>> sample = new RandomIntCollection().ToImmutableArray();
+        IEnumerable<INumber<int>> sample =
+        [
+            .. new RandomIntCollection(
+                new RandomUShort(new UShort(1), new UShort(10000)),
+                new Zero<int>(),
+                new Int(100000)
+            ).Prepend(new MaxInt()),
+        ];
         INumber<int> diff = new Difference<int>(sample);
-        Assert.Equal(sample.Select(x => x.NumberValue).Aggregate((a, b) => a - b), diff.NumberValue);
+        Assert.Equal(
+            sample.Select(x => x.NumberValue).Aggregate((a, b) => a - b),
+            diff.NumberValue
+        );
     }
 
     [Fact]
