@@ -17,7 +17,7 @@ public sealed record EqualConditionTests
     [Fact]
     public void TakesNegativeResultOnDifferentValues()
     {
-        IBool equality = new EqualCondition<int>(new Int(10), new Int(11), new Int(12));
+        IBool equality = new EqualCondition<int>(new RandomIntCollection());
         Assert.False(equality.BoolValue);
     }
 
