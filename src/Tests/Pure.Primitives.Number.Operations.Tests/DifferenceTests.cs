@@ -1,4 +1,6 @@
+using System.Collections.Immutable;
 using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Random.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -7,11 +9,9 @@ public sealed record DifferenceTests
     [Fact]
     public void Subtract()
     {
-        const int a = 10;
-        const int b = 20;
-        const int c = 30;
-        INumber<int> diff = new Difference<int>(new Int(a), new Int(b), new Int(c));
-        Assert.Equal(a - b - c, diff.NumberValue);
+        IEnumerable<INumber<int>> sample = new RandomIntCollection().ToImmutableArray();
+        INumber<int> diff = new Difference<int>(sample);
+        Assert.Equal(sample.Select(x => x.NumberValue).Aggregate((a, b) => a - b), diff.NumberValue);
     }
 
     [Fact]
