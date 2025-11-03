@@ -17,15 +17,9 @@ public sealed record DifferenceTests
     [Fact]
     public void SubtractLargeDoubleCollection()
     {
-        Random random = new Random();
-        IEnumerable<double> numbers =
-        [
-            .. Enumerable.Range(0, 10000).Select(_ => random.NextDouble()),
-        ];
-        INumber<double> difference = new Difference<double>(
-            numbers.Select(x => new Double(x))
-        );
-        Assert.Equal(numbers.Aggregate((x, y) => x - y), difference.NumberValue);
+        IEnumerable<INumber<double>> numbers = new RandomDoubleCollection().ToImmutableArray();
+        INumber<double> difference = new Difference<double>();
+        Assert.Equal(numbers.Select(x => x.NumberValue).Aggregate((x, y) => x - y), difference.NumberValue);
     }
 
     [Fact]
