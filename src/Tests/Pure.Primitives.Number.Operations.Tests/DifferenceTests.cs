@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Random.Number;
 
@@ -27,9 +26,15 @@ public sealed record DifferenceTests
     [Fact]
     public void SubtractLargeDoubleCollection()
     {
-        IEnumerable<INumber<double>> numbers = new RandomDoubleCollection().ToImmutableArray();
-        INumber<double> difference = new Difference<double>();
-        Assert.Equal(numbers.Select(x => x.NumberValue).Aggregate((x, y) => x - y), difference.NumberValue);
+        IEnumerable<INumber<double>> numbers =
+        [
+            .. new RandomDoubleCollection().Prepend(new MaxDouble()),
+        ];
+        INumber<double> difference = new Difference<double>(numbers);
+        Assert.Equal(
+            numbers.Select(x => x.NumberValue).Aggregate((x, y) => x - y),
+            difference.NumberValue
+        );
     }
 
     [Fact]
