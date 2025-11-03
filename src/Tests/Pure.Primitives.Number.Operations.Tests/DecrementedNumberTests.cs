@@ -28,11 +28,11 @@ public sealed record DecrementedNumberTests
     [Fact]
     public void DecrementDouble()
     {
-        const double sample = -10.763467567;
+        INumber<double> sample = new RandomDouble();
 
-        INumber<double> number = new DecrementedNumber<double>(new Double(sample));
+        INumber<double> number = new DecrementedNumber<double>(sample);
 
-        Assert.Equal(sample - 1, number.NumberValue);
+        Assert.Equal(sample.NumberValue - 1, number.NumberValue);
     }
 
     [Fact]
