@@ -18,11 +18,11 @@ public sealed record DecrementedNumberTests
     [Fact]
     public void DecrementInt()
     {
-        const int sample = 0;
+        INumber<int> sample = new RandomInt();
 
-        INumber<int> number = new DecrementedNumber<int>(new Int(sample));
+        INumber<int> number = new DecrementedNumber<int>(sample);
 
-        Assert.Equal(sample - 1, number.NumberValue);
+        Assert.Equal(sample.NumberValue - 1, number.NumberValue);
     }
 
     [Fact]
