@@ -24,11 +24,9 @@ public sealed record EqualConditionTests
     [Fact]
     public void TakesNegativeResultOnAllSameOneDifferentValue()
     {
+        INumber<int> value = new RandomInt();
         IBool equality = new EqualCondition<int>(
-            new Int(10),
-            new Int(10),
-            new Int(10),
-            new Int(12)
+            Enumerable.Range(0, 10).Select(x => value).Prepend(new RandomInt())
         );
         Assert.False(equality.BoolValue);
     }
