@@ -1,4 +1,6 @@
 using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Random.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -7,7 +9,8 @@ public sealed record EqualConditionTests
     [Fact]
     public void TakesPositiveResultOnSameValues()
     {
-        IBool equality = new EqualCondition<int>(new Int(10), new Int(10), new Int(10));
+        INumber<int> value = new RandomInt();
+        IBool equality = new EqualCondition<int>(Enumerable.Range(0, 10).Select(x => value));
         Assert.True(equality.BoolValue);
     }
 
