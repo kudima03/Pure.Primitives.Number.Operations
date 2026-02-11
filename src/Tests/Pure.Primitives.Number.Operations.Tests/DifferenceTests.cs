@@ -1,4 +1,5 @@
 using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Random.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -7,25 +8,33 @@ public sealed record DifferenceTests
     [Fact]
     public void Subtract()
     {
-        const int a = 10;
-        const int b = 20;
-        const int c = 30;
-        INumber<int> diff = new Difference<int>(new Int(a), new Int(b), new Int(c));
-        Assert.Equal(a - b - c, diff.NumberValue);
+        IEnumerable<INumber<int>> sample =
+        [
+            .. new RandomIntCollection(
+                new RandomUShort(new UShort(1), new UShort(10000)),
+                new Zero<int>(),
+                new Int(100000)
+            ).Prepend(new MaxInt()),
+        ];
+        INumber<int> diff = new Difference<int>(sample);
+        Assert.Equal(
+            sample.Select(x => x.NumberValue).Aggregate((a, b) => a - b),
+            diff.NumberValue
+        );
     }
 
     [Fact]
     public void SubtractLargeDoubleCollection()
     {
-        Random random = new Random();
-        IEnumerable<double> numbers =
+        IEnumerable<INumber<double>> numbers =
         [
-            .. Enumerable.Range(0, 10000).Select(_ => random.NextDouble()),
+            .. new RandomDoubleCollection().Prepend(new MaxDouble()),
         ];
-        INumber<double> difference = new Difference<double>(
-            numbers.Select(x => new Double(x))
+        INumber<double> difference = new Difference<double>(numbers);
+        Assert.Equal(
+            numbers.Select(x => x.NumberValue).Aggregate((x, y) => x - y),
+            difference.NumberValue
         );
-        Assert.Equal(numbers.Aggregate((x, y) => x - y), difference.NumberValue);
     }
 
     [Fact]

@@ -17,10 +17,9 @@ public sealed record SumTests
     [Fact]
     public void TakesSumFromLargeDoubleCollection()
     {
-        Random random = new Random();
         IEnumerable<double> numbers =
         [
-            .. Enumerable.Range(0, 10000).Select(_ => random.NextDouble()),
+            .. Enumerable.Range(0, 10000).Select(_ => System.Random.Shared.NextDouble()),
         ];
         INumber<double> sum = new Sum<double>(numbers.Select(x => new Double(x)));
         Assert.Equal(numbers.Sum(), sum.NumberValue);

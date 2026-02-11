@@ -1,4 +1,5 @@
 using Pure.Primitives.Abstractions.Number;
+using Pure.Primitives.Random.Number;
 
 namespace Pure.Primitives.Number.Operations.Tests;
 
@@ -7,31 +8,31 @@ public sealed record DecrementedNumberTests
     [Fact]
     public void DecrementFloat()
     {
-        const float sample = 10.3F;
+        INumber<float> sample = new RandomFloat();
 
-        INumber<float> number = new DecrementedNumber<float>(new Float(sample));
+        INumber<float> number = new DecrementedNumber<float>(sample);
 
-        Assert.Equal(sample - 1, number.NumberValue);
+        Assert.Equal(sample.NumberValue - 1, number.NumberValue);
     }
 
     [Fact]
     public void DecrementInt()
     {
-        const int sample = 0;
+        INumber<int> sample = new RandomInt();
 
-        INumber<int> number = new DecrementedNumber<int>(new Int(sample));
+        INumber<int> number = new DecrementedNumber<int>(sample);
 
-        Assert.Equal(sample - 1, number.NumberValue);
+        Assert.Equal(sample.NumberValue - 1, number.NumberValue);
     }
 
     [Fact]
     public void DecrementDouble()
     {
-        const double sample = -10.763467567;
+        INumber<double> sample = new RandomDouble();
 
-        INumber<double> number = new DecrementedNumber<double>(new Double(sample));
+        INumber<double> number = new DecrementedNumber<double>(sample);
 
-        Assert.Equal(sample - 1, number.NumberValue);
+        Assert.Equal(sample.NumberValue - 1, number.NumberValue);
     }
 
     [Fact]
