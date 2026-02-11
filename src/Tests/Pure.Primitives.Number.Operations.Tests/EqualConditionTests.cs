@@ -10,7 +10,9 @@ public sealed record EqualConditionTests
     public void TakesPositiveResultOnSameValues()
     {
         INumber<int> value = new RandomInt();
-        IBool equality = new EqualCondition<int>(Enumerable.Range(0, 10).Select(x => value));
+        IBool equality = new EqualCondition<int>(
+            Enumerable.Range(0, 10).Select(x => value)
+        );
         Assert.True(equality.BoolValue);
     }
 
