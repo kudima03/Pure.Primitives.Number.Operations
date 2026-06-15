@@ -28,10 +28,10 @@ public sealed record ProductTests
     }
 
     [Fact]
-    public void TakeProductFromEmptyCollectionAsZero()
+    public void TakeProductFromEmptyCollectionAsOne()
     {
         INumber<int> product = new Product<int>([]);
-        Assert.Equal(0, product.NumberValue);
+        Assert.Equal(1, product.NumberValue);
     }
 
     [Fact]
