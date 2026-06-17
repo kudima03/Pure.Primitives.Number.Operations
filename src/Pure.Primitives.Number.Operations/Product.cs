@@ -14,7 +14,7 @@ public sealed record Product<T> : INumber<T>
 
     public T NumberValue =>
         !_values.Any()
-            ? T.Zero
+            ? T.One
             : _values
                 .Select(x => x.NumberValue)
                 .Aggregate((number1, number2) => number1 * number2);
