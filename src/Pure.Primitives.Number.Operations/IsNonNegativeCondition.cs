@@ -6,14 +6,14 @@ namespace Pure.Primitives.Number.Operations;
 public sealed record IsNonNegativeCondition<T> : IBool
     where T : System.Numerics.INumber<T>
 {
-    private readonly IBool _condition;
+    private readonly INumber<T> _value;
 
     public IsNonNegativeCondition(INumber<T> value)
     {
-        _condition = new GreaterThanOrEqualCondition<T>(value, new Zero<T>());
+        _value = value;
     }
 
-    bool IBool.BoolValue => _condition.BoolValue;
+    bool IBool.BoolValue => _value.NumberValue >= T.Zero;
 
     public override int GetHashCode()
     {
