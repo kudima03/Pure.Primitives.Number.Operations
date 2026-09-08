@@ -30,6 +30,7 @@ This is a **value-object operations library** for the Pure ecosystem. Every file
 - `EqualCondition<T>`, `NotEqualCondition<T>` — equality across a sequence
 - `LessThanCondition<T>`, `LessThanOrEqualCondition<T>` — ascending order checks
 - `GreaterThanCondition<T>`, `GreaterThanOrEqualCondition<T>` — descending order checks
+- `IsNonNegativeCondition<T>` — sign check against `T.Zero`
 
 All values are **lazy** — computed on every `.NumberValue` / `.BoolValue` access, never cached. `GetHashCode()` and `ToString()` intentionally throw `NotSupportedException`.
 
