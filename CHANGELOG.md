@@ -6,6 +6,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.5.0] — 2026-09-08
+
+### Added
+
+- **`IsNonNegativeCondition<T>`** — a new `IBool` condition checking whether a
+  value is greater than or equal to `T.Zero`.
+
 ## [1.4.0] — 2026-06-17
 
 ### Fixed
