@@ -39,6 +39,7 @@ Composable number operations for the **Pure** ecosystem — arithmetic and compa
 | `LessThanOrEqualCondition<T>` | True when values are non-decreasing (each ≤ next) |
 | `GreaterThanCondition<T>` | True when values are strictly descending (each > next) |
 | `GreaterThanOrEqualCondition<T>` | True when values are non-increasing (each ≥ next) |
+| `IsNonNegativeCondition<T>` | True when the value is greater than or equal to `T.Zero` |
 
 ## Design Principles
 
