@@ -15,6 +15,8 @@ dotnet test --no-build --verbosity normal     # run tests
 dotnet pack --configuration Release -p:Version=<version> --output .
 ```
 
+CI additionally passes `-p:AssemblyVersion` (pinned to the major) and `-p:FileVersion`; see `.github/workflows/publish-nuget.yml`.
+
 ## Architecture
 
 This is a **value-object operations library** for the Pure ecosystem. Every file defines exactly one `sealed record` that wraps one or more `INumber<T>` values and exposes the computed result as a new `INumber<T>` or `IBool`.
