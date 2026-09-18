@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Pure.Primitives.Number.Operations.Tests/Pure.Primitives.Number.Operations.Tests.csproj" />
+  </Folder>
+  <Project Path="Pure.Primitives.Number.Operations/Pure.Primitives.Number.Operations.csproj" />
+</Solution>
