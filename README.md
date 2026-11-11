@@ -58,6 +58,7 @@ Composable number operations for the **Pure** ecosystem — arithmetic and compa
 - .NET 8
 - .NET 9
 - .NET 10
+- .NET 11
 
 ## Installation
 

@@ -38,9 +38,9 @@ All values are **lazy** — computed on every `.NumberValue` / `.BoolValue` acce
 
 **Overflow:** `CheckForOverflowUnderflow=true` — arithmetic that overflows throws `OverflowException`. Tests assert this explicitly.
 
-**Multi-targeting:** net7.0, net8.0, net9.0, net10.0. `IsAotCompatible=true`.
+**Multi-targeting:** net7.0, net8.0, net9.0, net10.0, net11.0. `IsAotCompatible=true`.
 
-**Tests:** xunit suite under `src/Tests/`, targeting net10.0. CI enforces ≥98% line coverage and ≥99% warning threshold.
+**Tests:** xunit suite under `src/Tests/`, targeting net11.0. CI enforces ≥98% line coverage and ≥99% warning threshold.
 
 **Publishing:** triggered by pushing a semver tag. The tag name becomes the `PackageVersion`. Published to both GitHub Packages and NuGet.
 
